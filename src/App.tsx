@@ -25,6 +25,12 @@ import {
   Camera
 } from 'lucide-react';
 
+declare global {
+  interface Window {
+    fbq: any;
+  }
+}
+
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showStickyButton, setShowStickyButton] = useState(false);
@@ -38,6 +44,18 @@ function App() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handlePurchaseClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    // Track the InitiateCheckout event
+    if (window.fbq) {
+      window.fbq('track', 'InitiateCheckout', {
+        currency: 'INR',
+        value: 499.00
+      });
+    }
+    window.open('https://superprofile.bio/vp/66bec527fb72df001378c55d', '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <div className="min-h-screen bg-rich-black text-platinum">
@@ -253,6 +271,7 @@ function App() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="premium-button group w-full"
+                onClick={handlePurchaseClick}
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   Download Now
@@ -323,10 +342,7 @@ function App() {
           className="premium-button group animate-glow flex items-center gap-2 px-6 py-3 shadow-lg hover:shadow-2xl active:scale-95 transition-all cursor-pointer touch-manipulation"
           style={{ WebkitTapHighlightColor: 'transparent' }}
           role="button"
-          onClick={(e) => {
-            e.preventDefault();
-            window.open('https://superprofile.bio/vp/66bec527fb72df001378c55d', '_blank', 'noopener,noreferrer');
-          }}
+          onClick={handlePurchaseClick}
         >
           <DollarSign className="w-5 h-5" />
           <span>Buy Now - ₹499</span>
