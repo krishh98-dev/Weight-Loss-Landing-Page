@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Activity, 
   Calendar, 
@@ -27,6 +27,17 @@ import {
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showStickyButton, setShowStickyButton] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show button after scrolling 300px
+      setShowStickyButton(window.scrollY > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <div className="min-h-screen bg-rich-black text-platinum">
@@ -278,7 +289,7 @@ function App() {
               },
               {
                 q: "Q: Can I use the tracker for both fitness and meal planning?",
-                a: "Definitely! The tracker is equipped with sections for workout planning, meal tracking, and grocery shopping. It’s an all-in-one tool to keep you on track with your workouts, nutrition, and overall fitness."
+                a: "Definitely! The tracker is equipped with sections for workout planning, meal tracking, and grocery shopping. It's an all-in-one tool to keep you on track with your workouts, nutrition, and overall fitness."
               },
               {
                 q: "Can I set fitness goals with the tracker?",
@@ -302,6 +313,20 @@ function App() {
           </div>
         </div>
       </section>
+
+      {/* Sticky Buy Button */}
+      <div className={`fixed bottom-8 right-8 transform transition-all duration-300 ${showStickyButton ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
+        <a
+          href="https://superprofile.bio/vp/66bec527fb72df001378c55d"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="premium-button group animate-glow flex items-center gap-2 px-6 py-3 shadow-lg hover:shadow-2xl"
+        >
+          <DollarSign className="w-5 h-5" />
+          <span>Buy Now - ₹499</span>
+          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+        </a>
+      </div>
 
       {/* Footer */}
       <footer id="contact" className="relative pt-20 pb-10">
