@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Premium dark theme colors */
+  --rich-black: #0B0F1A;
+  --deep-navy: #131B2E;
+  --royal-navy: #1C2942;
+  --midnight-purple: #2A1B54;
+  
+  /* Accent colors */
+  --golden-accent: #FFD700;
+  --rose-gold: #B76E79;
+  --platinum: #E5E4E2;
+  --sapphire: #0F52BA;
+}
+
+@layer components {
+  .mobile-menu {
+    @apply fixed top-0 left-0 w-full h-full bg-rich-black bg-opacity-95 backdrop-blur-lg transform transition-transform duration-300;
+  }
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--rich-black);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Premium Gradient Animation */
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 8s ease infinite;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Glow Animation */
+@keyframes glow {
+  0% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.2); }
+  50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); }
+  100% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.2); }
+}
+
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
+/* Responsive Typography */
+@media (max-width: 640px) {
+  .text-responsive {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+  }
+}
+
+.mobile-menu.open {
+  @apply translate-x-0;
+}
+
+.mobile-menu.closed {
+  @apply -translate-x-full;
+}
+
+/* Premium Card Styles */
+.premium-card {
+  @apply relative overflow-hidden rounded-2xl;
+  background: linear-gradient(135deg, var(--deep-navy) 0%, var(--midnight-purple) 100%);
+}
+
+.premium-card::before {
+  content: '';
+  @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+  background: linear-gradient(135deg, var(--golden-accent) 0%, var(--sapphire) 100%);
+}
+
+.premium-card:hover::before {
+  @apply opacity-10;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--rich-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--golden-accent), var(--sapphire));
+  border-radius: 4px;
+}
+
+/* FAQ Animations */
+details[open] summary ~ * {
+  animation: sweep .5s ease-in-out;
+}
+
+@keyframes sweep {
+  0%    {opacity: 0; transform: translateY(-10px)}
+  100%  {opacity: 1; transform: translateY(0)}
+}
+
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Responsive Grid Layouts */
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* Premium Button Styles */
+.premium-button {
+  @apply relative overflow-hidden rounded-full px-8 py-4 font-bold text-lg transition-all duration-300;
+  background: linear-gradient(135deg, var(--golden-accent), var(--sapphire));
+}
+
+.premium-button::before {
+  content: '';
+  @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+  background: linear-gradient(135deg, var(--sapphire), var(--golden-accent));
+}
+
+.premium-button:hover::before {
+  @apply opacity-100;
+}
+
+/* Premium Text Gradients */
+.premium-text {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(135deg, var(--golden-accent), var(--rose-gold));
+}
