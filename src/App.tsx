@@ -315,12 +315,18 @@ function App() {
       </section>
 
       {/* Sticky Buy Button */}
-      <div className={`fixed bottom-8 right-8 transform transition-all duration-300 ${showStickyButton ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
+      <div className={`fixed bottom-8 right-8 transform transition-all duration-300 z-50 ${showStickyButton ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
         <a
           href="https://superprofile.bio/vp/66bec527fb72df001378c55d"
           target="_blank"
           rel="noopener noreferrer"
-          className="premium-button group animate-glow flex items-center gap-2 px-6 py-3 shadow-lg hover:shadow-2xl"
+          className="premium-button group animate-glow flex items-center gap-2 px-6 py-3 shadow-lg hover:shadow-2xl active:scale-95 transition-all cursor-pointer touch-manipulation"
+          style={{ WebkitTapHighlightColor: 'transparent' }}
+          role="button"
+          onClick={(e) => {
+            e.preventDefault();
+            window.open('https://superprofile.bio/vp/66bec527fb72df001378c55d', '_blank', 'noopener,noreferrer');
+          }}
         >
           <DollarSign className="w-5 h-5" />
           <span>Buy Now - ₹499</span>
