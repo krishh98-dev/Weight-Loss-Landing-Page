@@ -425,9 +425,9 @@ function App() {
               <h4 className="font-bold mb-4">Contact Us</h4>
               <ul className="space-y-4">
                 {[
-                  { icon: <Mail className="w-5 h-5" />, text: "support@fittracker.com" },
-                  { icon: <Phone className="w-5 h-5" />, text: "+1 (555) 123-4567" },
-                  { icon: <MapPin className="w-5 h-5" />, text: "123 Fitness Street, Health City, FC 12345" }
+                  { icon: <Mail className="w-5 h-5" />, text: "birzcrown@gmail.com" },
+                  { icon: <Phone className="w-5 h-5" />, text: "+91 9006199507" },
+                  { icon: <MapPin className="w-5 h-5" />, text: "Mumbai" }
                 ].map((contact, i) => (
                   <li key={i} className="flex items-center gap-2 text-platinum/60">
                     <span className="text-golden-accent">{contact.icon}</span>
