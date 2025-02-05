@@ -4,9 +4,113 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <meta name="description" content="Transform your fitness journey with FitTracker - The ultimate weight loss and fitness tracking solution" />
+    <meta name="keywords" content="fitness tracker, weight loss, workout planner, meal planning, fitness goals" />
+    <meta name="robots" content="index, follow" />
+    <title>FitTracker - Transform Your Fitness Journey</title>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+      // Check for cookie consent
+      function checkCookieConsent() {
+        return localStorage.getItem('cookieConsent') === 'accepted';
+      }
+
+      // Initialize Facebook Pixel with consent check
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+
+      // Only initialize if consent is given
+      if (checkCookieConsent()) {
+        fbq('init', '451628170756783');
+        fbq('track', 'PageView');
+      }
+
+      // Function to handle consent
+      window.acceptCookies = function() {
+        localStorage.setItem('cookieConsent', 'accepted');
+        fbq('init', '451628170756783');
+        fbq('track', 'PageView');
+        document.getElementById('cookieConsent').style.display = 'none';
+      }
+    </script>
+    <!-- End Meta Pixel Code -->
+
+    <!-- Microsoft Clarity Code -->
+    <script type="text/javascript">
+      // Only initialize Clarity if consent is given
+      if (checkCookieConsent()) {
+        (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "q50352jeo7");
+      }
+    </script>
+    <!-- End Microsoft Clarity Code -->
+
+    <style>
+      #cookieConsent {
+        position: fixed;
+        bottom: 1rem;
+        left: 1rem;
+        right: 1rem;
+        padding: 1rem;
+        background: rgba(0, 0, 0, 0.9);
+        color: white;
+        z-index: 9999;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 0.5rem;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      #cookieConsent button {
+        background: #ffd700;
+        color: black;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.2s;
+      }
+      #cookieConsent button:hover {
+        transform: scale(1.05);
+      }
+    </style>
   </head>
   <body>
+    <!-- Facebook Pixel Noscript -->
+    <noscript>
+      <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=451628170756783&ev=PageView&noscript=1"
+      />
+    </noscript>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookieConsent" style="display: none">
+      <div>
+        We use cookies to improve your experience and analyze site usage. 
+        By continuing to use this site, you consent to our use of cookies.
+      </div>
+      <button onclick="acceptCookies()">Accept Cookies</button>
+    </div>
+
+    <script>
+      // Show cookie consent banner if not already accepted
+      if (!checkCookieConsent()) {
+        document.getElementById('cookieConsent').style.display = 'flex';
+      }
+    </script>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
